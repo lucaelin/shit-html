@@ -46,7 +46,7 @@ describe('shit-element', function () {
         static get styles() {
           return [css`
           h1 {
-            --some-variable: green;
+            --some-variable: "green";
           }
         `]
         }
@@ -70,7 +70,7 @@ describe('shit-element', function () {
       const h1 = this.targetShadow.querySelector('h1');
       expect(h1).to.exist;
       const style = getComputedStyle(h1);
-      expect(style.getPropertyValue('--some-variable')).to.equal('green');
+      expect(style.getPropertyValue('--some-variable')).to.contain('green');
       const controlStyle = getComputedStyle(this.control);
       expect(controlStyle.getPropertyValue('--some-variable')).to.not.equal('green');
     },

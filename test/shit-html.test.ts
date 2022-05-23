@@ -112,7 +112,7 @@ describe('shit-html', function () {
     function given() {
     },
     function when() {
-      render(html`<h1>Hello</h1> <h2>${"World"}!</h2>`, this.target);
+      render(html`<h1>Hello</h1> <h2>${"World!"}</h2>`, this.target);
     },
     function then() {
       const h1 = this.target.querySelector('h1');
