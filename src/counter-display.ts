@@ -1,4 +1,4 @@
-import { ShitElement, html, css } from '../src/shit-element';
+import { ShitElement, html, css } from '../src/shit';
 import { customElement } from 'lit/decorators.js';
 import "tslib";
 

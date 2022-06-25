@@ -1,5 +1,4 @@
-import { render, html, css } from './shit-html.v3';
-export { render, html, css };
+import { render } from './shit';
 
 type ShitProperties = { [key: string]: ShitProperty }
 type ShitProperty = {
@@ -46,6 +45,7 @@ export abstract class ShitElement extends HTMLElement {
           this.internalProperties[name] = v;
           this.requestUpdate();
         },
+        configurable: true,
       })
     })
   }
