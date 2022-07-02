@@ -1,5 +1,5 @@
 function getNodeFromPath(path: number[], root: Node): Node {
-  // console.log('finding node on', root, 'at', path);
+  console.log('finding node on', root, 'at', path);
   return path.reduce((p, c) => p.childNodes[c], root);
 }
 
@@ -108,15 +108,20 @@ export function html(strParts: TemplateStringsArray, ...exprResults: unknown[]) 
     template: template,
     store: store,
     valueMarkers: findValueMarkers(template.content),
+    strings: strParts,
     values: exprResults,
   };
 }
 type ShitTemplate = ReturnType<typeof html>;
 
+const currentTemplate = Symbol();
+
 export function render(template: ShitTemplate, target: HTMLElement | ShadowRoot) {
   // console.log('rendering', shitTemplate, 'into', target);
-
-  target.replaceChildren(template.template.content.cloneNode(true));
+  if (!target[currentTemplate] || target[currentTemplate].strings !== template.strings) {
+    target.replaceChildren(template.template.content.cloneNode(true));
+    target[currentTemplate] = template;
+  }
 
   Object.entries(template.valueMarkers).forEach(([marker, setter]) => {
     // console.log('setting marker', marker, setter);

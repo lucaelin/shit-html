@@ -2,10 +2,9 @@ import chai from 'chai';
 const expect = chai.expect;
 import gwt from './gwt';
 
-//import {html, render, css} from 'lit';
-//import {LitElement as ShitElement} from 'lit';
+//import {html, render, css, LitElement as ShitElement} from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { ShitElement, html, css } from '../src/shit-element.v1';
+import { ShitElement, html, css } from '../src/shit';
 
 
 function givenAll() { }
@@ -70,7 +69,7 @@ describe('shit-element', function () {
       const h1 = this.targetShadow.querySelector('h1');
       expect(h1).to.exist;
       const style = getComputedStyle(h1);
-      expect(style.getPropertyValue('--some-variable')).to.equal('green');
+      expect(style.getPropertyValue('--some-variable')).to.contain('green');
       const controlStyle = getComputedStyle(this.control);
       expect(controlStyle.getPropertyValue('--some-variable')).to.not.equal('green');
     },
@@ -90,8 +89,13 @@ describe('shit-element', function () {
         }
         value = 'yay';
 
+        constructor() {
+          super();
+        }
+
         render() {
-          return html`<h1>${this.value}</h1>`;
+          console.log('rendering element with value', this.value);
+          return html`<h1>${this.value}</h1>`
         }
       }
 

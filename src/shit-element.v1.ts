@@ -1,5 +1,4 @@
-import { render, html, css } from './shit-html.v1';
-export { render, html, css };
+import { render } from './shit';
 
 type Properties = {
   [key: string]: {

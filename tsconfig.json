@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "esnext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "useDefineForClassFields": false,
     "plugins": [
       {
         "name": "ts-lit-plugin",

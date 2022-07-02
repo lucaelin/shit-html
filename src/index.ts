@@ -1,6 +1,5 @@
-import { html, render } from './shit-html';
+import { html, render } from './shit';
 import './counter-display';
-//import {html, render} from 'lit';
 
 let value = 0;
 (function update() {
